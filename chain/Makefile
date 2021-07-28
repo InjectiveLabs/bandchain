@@ -23,6 +23,10 @@ install: go.sum
 	go install -mod=readonly $(BUILD_FLAGS) ./cmd/bandd
 	go install -mod=readonly $(BUILD_FLAGS) ./cmd/bandcli
 	go install -mod=readonly $(BUILD_FLAGS) ./cmd/yoda
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/vader
+
+install-vader: go.sum
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/vader
 
 faucet: go.sum
 	go install -mod=readonly $(BUILD_FLAGS) ./cmd/faucet

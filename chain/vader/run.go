@@ -23,11 +23,12 @@ import (
 const BandPriceMultiplier uint64 = 1000000000 // 1e9
 
 func runImpl(c *Context, l *Logger) error {
-	l.Info(":rocket: Starting WebSocket subscriber")
-	err := c.client.Start()
-	if err != nil {
-		return err
-	}
+	//l.Info(":rocket: Starting WebSocket subscriber")
+	//err := c.client.Start()
+	//
+	//if err != nil {
+	//	return err
+	//}
 
 	ctx, cxl := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cxl()
@@ -37,6 +38,7 @@ func runImpl(c *Context, l *Logger) error {
 		go metricsListen(cfg.MetricsListenAddr, c)
 	}
 
+	fmt.Println("hi")
 	for {
 		fmt.Println("Hey :)")
 		input := pricetypes.Input{
@@ -58,7 +60,7 @@ func runImpl(c *Context, l *Logger) error {
 			continue
 		}
 
-		_ = hash
+		fmt.Printf("Sent tx %s \n", hash)
 		time.Sleep(30 * time.Second)
 
 		_ = ctx

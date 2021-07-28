@@ -21,9 +21,9 @@ func estimateTxSize(msgs []sdk.Msg) uint64 {
 	size := baseTransactionSize
 
 	for _, msg := range msgs {
-		msg, ok := msg.(types.MsgReportData)
+		msg, ok := msg.(types.MsgRequestData)
 		if !ok {
-			panic("Don't support non-report data message")
+			panic("Don't support non-request data message")
 		}
 
 		ser := cdc.MustMarshalBinaryBare(msg)
